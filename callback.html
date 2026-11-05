@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Tesla OAuth Callback</title></head>
+<body>
+<h1>Tesla OAuth Callback</h1>
+<p id="out">Waiting…</p>
+<script>
+const p = new URLSearchParams(location.search);
+const code = p.get('code');
+const err = p.get('error');
+const el = document.getElementById('out');
+if (err) el.textContent = 'Error: ' + err + ' — ' + (p.get('error_description') || '');
+else if (code) el.textContent = 'Authorization code received. Copy this code back to Grok Bot (expires quickly):\n\n' + code;
+else el.textContent = 'No code in URL. Full query: ' + location.search;
+</script>
+</body></html>
